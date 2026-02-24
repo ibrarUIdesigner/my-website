@@ -32,7 +32,7 @@ export default function Navbar(): JSX.Element {
             </span>
           </div>
           <span className="text-sm font-bold tracking-wider text-slate-200 font-mono-nums uppercase">
-            IBRAR • Senior Frontend & Automation
+            DEV.Portfolio
           </span>
         </div>
 

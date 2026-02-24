@@ -69,11 +69,13 @@ export default function Projects(): JSX.Element {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-800 pb-8">
               <div>
                 <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-500">
-                  Selected <span className="text-sky-400">Work</span>
+                  Production <span className="text-sky-400">Work</span>
                 </h1>
                 <p className="text-slate-400 max-w-lg text-lg leading-relaxed">
-                  Selected production work focused on scalable applications, clean frontend
-                  architecture, robust REST API integration, and measurable performance gains.
+                  A curated selection of production projects spanning scalable
+                  frontend architecture, workflow automation, and full-stack
+                  delivery. Each project reflects a real problem, a deliberate
+                  technical approach, and a shipped result — not just a demo.
                 </p>
               </div>
               <div className="flex items-center gap-4 text-slate-500 font-mono text-sm tracking-widest">
