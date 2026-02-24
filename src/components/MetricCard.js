@@ -1,0 +1,13 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import BentoCard from "./BentoCard";
+export default function MetricCard(props) {
+    const { value, label, hint, icon, delta, trend, badge, actionable, loading, className, } = props;
+    const trendClasses = trend === "down"
+        ? "text-red-400 bg-red-500/10 border border-red-500/20"
+        : "text-sky-400 bg-sky-500/10 border border-sky-500/20";
+    const trendIcon = trend === "down" ? "trending_down" : "trending_up";
+    if (loading) {
+        return (_jsxs(BentoCard, { className: `p-6 flex flex-col items-center justify-center text-center group relative overflow-hidden ${className ?? ""}`, children: [_jsx("div", { className: "absolute inset-0 bg-sky-500/5 opacity-100 animate-pulse" }), _jsx("div", { className: "w-20 h-8 rounded-md bg-slate-800/60 mb-3" }), _jsx("div", { className: "w-28 h-3 rounded-md bg-slate-800/60" })] }));
+    }
+    return (_jsxs(BentoCard, { className: `p-6 flex flex-col items-center justify-center text-center group relative overflow-hidden ${className ?? ""}`, children: [_jsx("div", { className: "absolute inset-0 bg-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" }), (badge || actionable) && (_jsxs("div", { className: "absolute top-4 left-4 right-4 flex justify-between items-center", children: [_jsx("div", { className: "px-2 py-1 bg-sky-500/10 border border-sky-500/20 rounded text-[10px] font-bold uppercase tracking-wider text-sky-400", children: badge }), actionable && (_jsx("div", { className: "w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 group-hover:text-white group-hover:border-sky-500/50 transition-all", children: _jsx("span", { className: "material-symbols-outlined text-lg", children: "arrow_outward" }) }))] })), icon && (_jsx("div", { className: "mb-3 w-10 h-10 rounded-lg bg-slate-900/50 border border-slate-800/60 flex items-center justify-center", children: _jsx("i", { className: `${icon} text-lg text-slate-300` }) })), _jsx("div", { className: "text-5xl font-bold text-white mb-2 font-mono-nums tracking-tighter group-hover:text-sky-400 transition-colors", children: value }), _jsx("div", { className: "text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold", children: label }), hint && _jsx("div", { className: "mt-2 text-[11px] text-slate-500", children: hint }), delta && (_jsxs("div", { className: `mt-3 inline-flex items-center gap-1 px-2 py-1 rounded ${trendClasses}`, children: [_jsx("span", { className: "material-symbols-outlined text-[14px]", children: trendIcon }), _jsx("span", { className: "text-[11px] font-mono-nums", children: delta })] }))] }));
+}
