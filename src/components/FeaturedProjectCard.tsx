@@ -17,16 +17,20 @@ export default function FeaturedProjectCard(): JSX.Element {
   const [item, setItem] = useState<RemoteProject | null>(null);
 
   useEffect(() => {
-    const url = "https://portfolio-e626d-default-rtdb.firebaseio.com/projects.json";
+    const url =
+      "https://portfolio-e626d-default-rtdb.firebaseio.com/projects.json";
     fetch(url)
       .then(async (res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         let list: Array<RemoteProject> = [];
-        if (Array.isArray(data)) list = data.filter(Boolean) as Array<RemoteProject>;
-        else if (data && typeof data === "object") list = Object.values(data as Record<string, RemoteProject>);
+        if (Array.isArray(data))
+          list = data.filter(Boolean) as Array<RemoteProject>;
+        else if (data && typeof data === "object")
+          list = Object.values(data as Record<string, RemoteProject>);
         if (list.length > 0) {
-          const random = list[Math.floor(Math.random() * list.length)];
+          const idx = Math.floor(Math.random() * list.length);
+          const random = list[idx] ?? list[0] ?? null;
           setItem(random);
         }
       })
@@ -41,7 +45,7 @@ export default function FeaturedProjectCard(): JSX.Element {
             "https://firebasestorage.googleapis.com/v0/b/portfolio-e626d.appspot.com/o/images%2Fd090ea86-0412-4942-b072-e1ce8f7adde4_HomePage.jpg?alt=media&token=7d6327e2-f37c-4cf3-9316-81eda49e338b",
           thumbnailUrl:
             "https://firebasestorage.googleapis.com/v0/b/portfolio-e626d.appspot.com/o/images%2F2817ebc9-7d9b-4a5d-a65e-c3e554b40790_01-BONX.png?alt=media&token=3c991dfd-a933-467b-a0f5-9d1a773974a6",
-          link: ""
+          link: "",
         });
       });
   }, []);
@@ -68,11 +72,15 @@ export default function FeaturedProjectCard(): JSX.Element {
             rel="noopener noreferrer"
             aria-label="Open Featured"
           >
-            <span className="material-symbols-outlined text-lg">arrow_outward</span>
+            <span className="material-symbols-outlined text-lg">
+              arrow_outward
+            </span>
           </a>
         ) : (
           <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-slate-300 group-hover:text-white group-hover:border-sky-500/50 transition-all">
-            <span className="material-symbols-outlined text-lg">arrow_outward</span>
+            <span className="material-symbols-outlined text-lg">
+              arrow_outward
+            </span>
           </div>
         )}
       </div>
