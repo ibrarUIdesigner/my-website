@@ -13,7 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "types": []
+    "types": [],
+    "noEmit": true
   },
   "include": ["src"],
   "references": [

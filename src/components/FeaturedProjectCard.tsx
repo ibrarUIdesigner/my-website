@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { JSX } from "react";
 import BentoCard from "./BentoCard";
 import { projectImgUrl } from "../assets/images";
+import { LoadingContext } from "../context/LoadingContext";
 
 type RemoteProject = {
   id: string;
@@ -15,10 +16,12 @@ type RemoteProject = {
 
 export default function FeaturedProjectCard(): JSX.Element {
   const [item, setItem] = useState<RemoteProject | null>(null);
+  const { start, stop } = useContext(LoadingContext);
 
   useEffect(() => {
     const url =
       "https://portfolio-e626d-default-rtdb.firebaseio.com/projects.json";
+    start();
     fetch(url)
       .then(async (res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -47,7 +50,8 @@ export default function FeaturedProjectCard(): JSX.Element {
             "https://firebasestorage.googleapis.com/v0/b/portfolio-e626d.appspot.com/o/images%2F2817ebc9-7d9b-4a5d-a65e-c3e554b40790_01-BONX.png?alt=media&token=3c991dfd-a933-467b-a0f5-9d1a773974a6",
           link: "",
         });
-      });
+      })
+      .finally(() => stop());
   }, []);
 
   return (

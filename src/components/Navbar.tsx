@@ -21,17 +21,17 @@ export default function Navbar(): JSX.Element {
   return (
     <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-[#030610]/80 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div
+          className="flex items-center gap-3 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
           <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center relative overflow-hidden group">
             <div className="absolute inset-0 bg-sky-500/20 blur-md group-hover:bg-sky-500/30 transition-all" />
             <span className="material-symbols-outlined text-sky-400 text-lg relative z-10">
               code
             </span>
           </div>
-          <span
-            onClick={() => navigate("/")}
-            className="text-sm font-bold tracking-wider text-slate-200 font-mono-nums uppercase"
-          >
+          <span className="text-sm font-bold tracking-wider text-slate-200 font-mono-nums uppercase">
             Dev.Portfolio
           </span>
         </div>
@@ -87,30 +87,42 @@ export default function Navbar(): JSX.Element {
           </button>
         </div>
       </div>
-      {open && (
-        <div className="md:hidden border-t border-white/5 bg-[#030610]/90 backdrop-blur-xl">
-          <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col gap-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
-            {LINKS.map((item) => (
-              <Link
-                key={item}
-                className="text-xs font-medium tracking-wide text-slate-300 hover:text-sky-400 transition-colors uppercase py-1"
-                to={
-                  item === "Projects"
-                    ? "/projects"
-                    : item === "About"
-                    ? "/about"
-                    : item === "Insights"
-                    ? "/blogs"
-                    : "/"
-                }
-                onClick={() => setOpen(false)}
-              >
-                {item}
-              </Link>
-            ))}
-          </div>
+      <div
+        className={`md:hidden border-t border-white/5 bg-[#030610]/90 backdrop-blur-xl transition-all duration-300 ease-out ${
+          open
+            ? "opacity-100 translate-y-0 max-h-[calc(100vh-4rem)]"
+            : "opacity-0 -translate-y-2 max-h-0 pointer-events-none"
+        } overflow-hidden`}
+        aria-hidden={!open}
+      >
+        <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col gap-2 overflow-y-auto">
+          {LINKS.map((item) => (
+            <Link
+              key={item}
+              className="text-xs font-medium tracking-wide text-slate-300 hover:text-sky-400 transition-colors uppercase py-1"
+              to={
+                item === "Projects"
+                  ? "/projects"
+                  : item === "About"
+                  ? "/about"
+                  : item === "Insights"
+                  ? "/blogs"
+                  : "/"
+              }
+              onClick={() => setOpen(false)}
+            >
+              {item}
+            </Link>
+          ))}
+          <Link
+            className="text-xs font-medium tracking-wide text-slate-300 hover:text-sky-400 transition-colors uppercase py-1"
+            to="/contact"
+            onClick={() => setOpen(false)}
+          >
+            Contact
+          </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

@@ -1,8 +1,9 @@
 import type { JSX } from "react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import ProjectCard from "../components/ProjectCard";
 import StatsRow from "../components/StatsRow";
+import { LoadingContext } from "../context/LoadingContext";
 
 type RemoteProject = {
   id: string;
@@ -18,10 +19,12 @@ export default function Projects(): JSX.Element {
   const [items, setItems] = useState<Array<RemoteProject>>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const { start, stop } = useContext(LoadingContext);
 
   useEffect(() => {
     const url =
       "https://portfolio-e626d-default-rtdb.firebaseio.com/projects.json";
+    start();
     fetch(url)
       .then(async (res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -51,7 +54,10 @@ export default function Projects(): JSX.Element {
           },
         ]);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        stop();
+      });
   }, []);
   return (
     <div className="relative min-h-screen">

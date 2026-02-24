@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import type { JSX } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import BentoCard from "../components/BentoCard";
 import StatsRow from "../components/StatsRow";
+import { LoadingContext } from "../context/LoadingContext";
 
 type RemoteBlog = {
   id: string;
@@ -17,9 +18,11 @@ export default function Blogs(): JSX.Element {
   const [items, setItems] = useState<Array<RemoteBlog>>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const { start, stop } = useContext(LoadingContext);
 
   useEffect(() => {
     const url = "https://portfolio-e626d-default-rtdb.firebaseio.com/blogs.json";
+    start();
     fetch(url)
       .then(async (res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -43,7 +46,10 @@ export default function Blogs(): JSX.Element {
           },
         ]);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        stop();
+      });
   }, []);
 
   return (

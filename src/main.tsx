@@ -4,6 +4,8 @@ import App from "./App";
 import "./styles/globals.css";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./context/AuthContext";
+import LoadingProvider from "./context/LoadingContext";
+import LoadingOverlay from "./components/LoadingOverlay";
 
 // Ensure dark mode is applied before React mounts
 const html = document.documentElement;
@@ -19,7 +21,10 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <LoadingProvider>
+          <App />
+          <LoadingOverlay />
+        </LoadingProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -4,7 +4,7 @@ import AdminLayout from "../../components/AdminLayout";
 import BentoCard from "../../components/BentoCard";
 import StatsRow from "../../components/StatsRow";
 import { list, upsert, remove } from "../../lib/firebase";
-import { uploadImage } from "../../lib/storage";
+import { uploadToCloudinary } from "../../lib/cloudinary";
 import Wysiwyg from "../../components/Wysiwyg";
 
 type Blog = {
@@ -19,6 +19,8 @@ export default function AdminBlogs(): JSX.Element {
   const [items, setItems] = useState<Array<Blog>>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [editing, setEditing] = useState<Blog | null>(null);
+  const [uploading, setUploading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   const refresh = () => {
     setLoading(true);
@@ -37,8 +39,13 @@ export default function AdminBlogs(): JSX.Element {
   const cancelEdit = () => setEditing(null);
   const saveEdit = async () => {
     if (!editing) return;
+    if (!editing.name || !editing.description) {
+      setError("Please provide a title and description.");
+      return;
+    }
     const id = await upsert<Blog>("blogs", editing);
     setEditing(null);
+    setError(null);
     refresh();
   };
   const deleteItem = async (id?: string) => {
@@ -89,8 +96,17 @@ export default function AdminBlogs(): JSX.Element {
                     onChange={async (e) => {
                       const f = e.target.files?.[0];
                       if (f) {
-                        const url = await uploadImage(f, "blogs");
-                        setEditing({ ...editing, imageUrl: url });
+                        setUploading(true);
+                        setError(null);
+                        const url = await uploadToCloudinary(f);
+                        if (url) {
+                          setEditing({ ...editing, imageUrl: url });
+                        } else {
+                          setError(
+                            "Image upload failed. Check Cloudinary config."
+                          );
+                        }
+                        setUploading(false);
                       }
                     }}
                     className="text-xs w-full rounded-md bg-slate-900/50 border border-slate-800 text-slate-200 px-3 py-2 focus:outline-none focus:border-sky-500/50"
@@ -123,12 +139,14 @@ export default function AdminBlogs(): JSX.Element {
                 placeholder="Write your post..."
               />
             </label>
+            {error && <div className="mt-3 text-xs text-red-400">{error}</div>}
             <div className="mt-4 flex gap-3">
               <button
                 className="px-4 py-2 btn-laser text-sky-400 rounded-md text-xs font-bold tracking-wider uppercase"
                 onClick={saveEdit}
+                disabled={uploading}
               >
-                Save
+                {uploading ? "Uploading…" : "Save"}
               </button>
               <button
                 className="px-4 py-2 rounded-md border border-slate-800 text-xs font-bold tracking-wider uppercase text-slate-400"
