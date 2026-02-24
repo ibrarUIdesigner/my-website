@@ -98,6 +98,11 @@ export default function About(): JSX.Element {
                   through reliable API integration.
                 </p>
                 <p className="text-slate-400 text-sm leading-relaxed mt-4">
+                  Ownership mindset: I define technical direction, align trade‑offs with
+                  business goals, and deliver systems that stay maintainable in production —
+                  from component design and state management to CI/CD, observability, and SLAs.
+                </p>
+                <p className="text-slate-400 text-sm leading-relaxed mt-4">
                   My focus areas: <span className="font-bold text-white">Scalable Applications</span>,{" "}
                   <span className="font-bold text-white">Performance Optimization</span>,{" "}
                   <span className="font-bold text-white">Clean Code</span>, and{" "}

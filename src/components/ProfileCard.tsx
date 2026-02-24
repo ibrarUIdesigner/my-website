@@ -28,11 +28,10 @@ export default function ProfileCard(): JSX.Element {
           Senior Frontend Engineer • Automation
         </p>
         <p className="text-slate-400 text-sm leading-relaxed mb-6 border-l-2 border-slate-800 pl-3">
-          I build scalable, production-grade frontends (React, Angular, TypeScript)
-          with clean architecture, robust REST API integration, and performance
-          optimization through profiling and best practices. Strong backend integration
-          (Node.js, Express.js) plus workflow automation (n8n, Make.com, Zapier) to
-          ship faster with reliability.
+          I lead frontends that scale: React/Angular + TypeScript, clean architecture,
+          robust REST APIs, and disciplined performance work (profiling, caching, code-splitting).
+          Strong Node.js/Express.js integration enables end-to-end delivery. Automation (n8n,
+          Make.com, Zapier) removes repetitive ops so teams ship with confidence.
         </p>
       </div>
       <Link

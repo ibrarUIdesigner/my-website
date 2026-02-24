@@ -17,9 +17,9 @@ export default function Contact(): JSX.Element {
                   Let&apos;s ship scalable, reliable products.
                 </h1>
                 <p className="text-slate-400 max-w-xl text-lg leading-relaxed mt-4">
-                  Share your roadmap or problem statement — I respond within 24
-                  hours with a practical approach focused on clean architecture,
-                  performance, and delivery.
+                  Bring the problem; I’ll bring the architecture. Expect practical proposals,
+                  risk‑aware trade‑offs, and execution that prioritizes performance, reliability,
+                  and long‑term maintainability.
                 </p>
               </div>
               <div className="flex items-center gap-4 text-slate-500 font-mono text-sm tracking-widest">

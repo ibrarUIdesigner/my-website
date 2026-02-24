@@ -17,10 +17,9 @@ export default function Hero(): JSX.Element {
         Shipping scalable, performant frontends — with automation built in.
       </h1>
       <p className="text-slate-400 max-w-xl mx-auto mb-10 text-sm leading-relaxed">
-        Senior Frontend Engineer (React, Angular, TypeScript, JavaScript) with strong backend
-        integration (Node.js, Express.js) and workflow automation (n8n, Make.com, Zapier).
-        I design clean frontend architecture, integrate robust REST APIs, and deliver responsive,
-        production-grade applications optimized for performance and reliability.
+        I own delivery from architecture to deployment: React/Angular + TypeScript on the frontend,
+        Node.js/Express.js on the backend, and automation at scale (n8n, Make.com, Zapier).
+        Result: production systems that load fast, scale cleanly, and reduce operational overhead.
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <Link
