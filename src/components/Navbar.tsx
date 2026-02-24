@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import type { JSX } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LINKS = ["Home", "Projects", "About", "Insights"] as const;
 
 export default function Navbar(): JSX.Element {
+  const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(false);
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     const saved = localStorage.getItem("theme");
     if (saved === "light" || saved === "dark") return saved;
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    return prefersDark ? "dark" : "light";
+    return "dark";
   });
   useEffect(() => {
     const root = document.documentElement;
@@ -30,8 +28,11 @@ export default function Navbar(): JSX.Element {
               code
             </span>
           </div>
-          <span className="text-sm font-bold tracking-wider text-slate-200 font-mono-nums uppercase">
-            Dev.Portfolio_v2
+          <span
+            onClick={() => navigate("/")}
+            className="text-sm font-bold tracking-wider text-slate-200 font-mono-nums uppercase"
+          >
+            Dev.Portfolio
           </span>
         </div>
 
@@ -40,7 +41,15 @@ export default function Navbar(): JSX.Element {
             <Link
               key={item}
               className="text-xs font-medium tracking-wide text-slate-400 hover:text-sky-400 transition-colors uppercase"
-              to={item === "Projects" ? "/projects" : item === "About" ? "/about" : item === "Insights" ? "/blogs" : "/"}
+              to={
+                item === "Projects"
+                  ? "/projects"
+                  : item === "About"
+                  ? "/about"
+                  : item === "Insights"
+                  ? "/blogs"
+                  : "/"
+              }
             >
               {item}
             </Link>
@@ -60,7 +69,7 @@ export default function Navbar(): JSX.Element {
             </span>
           </button>
           <Link
-            className="px-5 py-2 btn-laser text-sky-400 rounded-md text-xs font-bold tracking-wider uppercase hover:text-sky-300 active:scale-95"
+            className="px-5 py-2 btn-laser text-sky-400 rounded-md text-xs font-bold tracking-wider uppercase hover:text-sky-300 active:scale-95 hidden md:inline-flex"
             to="/contact"
           >
             Contact
@@ -80,26 +89,25 @@ export default function Navbar(): JSX.Element {
       </div>
       {open && (
         <div className="md:hidden border-t border-white/5 bg-[#030610]/90 backdrop-blur-xl">
-          <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col gap-2">
+          <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col gap-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
             {LINKS.map((item) => (
               <Link
                 key={item}
                 className="text-xs font-medium tracking-wide text-slate-300 hover:text-sky-400 transition-colors uppercase py-1"
-                to={item === "Projects" ? "/projects" : item === "About" ? "/about" : item === "Insights" ? "/blogs" : "/"}
+                to={
+                  item === "Projects"
+                    ? "/projects"
+                    : item === "About"
+                    ? "/about"
+                    : item === "Insights"
+                    ? "/blogs"
+                    : "/"
+                }
                 onClick={() => setOpen(false)}
               >
                 {item}
               </Link>
             ))}
-            <div className="pt-2">
-              <Link
-                className="w-full inline-flex justify-center px-5 py-2 btn-laser text-sky-400 rounded-md text-xs font-bold tracking-wider uppercase hover:text-sky-300 active:scale-95"
-                to="/contact"
-                onClick={() => setOpen(false)}
-              >
-                Contact
-              </Link>
-            </div>
           </div>
         </div>
       )}

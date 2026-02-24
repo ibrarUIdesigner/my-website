@@ -5,6 +5,11 @@ import "./styles/globals.css";
 import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./context/AuthContext";
 
+// Ensure dark mode is applied before React mounts
+const html = document.documentElement;
+html.classList.remove("light");
+html.classList.add("dark");
+
 const container = document.getElementById("root");
 if (!container) {
   throw new Error("Root container not found");

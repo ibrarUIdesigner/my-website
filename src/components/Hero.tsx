@@ -34,7 +34,8 @@ export default function Hero(): JSX.Element {
         </Link>
         <a
           className="w-full sm:w-auto px-8 py-3 border border-slate-800 text-slate-400 rounded-md font-medium text-sm hover:border-slate-600 hover:text-slate-200 transition-all flex items-center justify-center gap-2 bg-slate-900/50"
-          href="#"
+          href="/MuhammadIbrarResume_Frontend_Angular_Developer_4YR_EXP.pdf"
+          download="MuhammadIbrarResume_Frontend_Angular_Developer_4YR_EXP.pdf"
         >
           Download_CV
           <span className="material-symbols-outlined text-sm">terminal</span>
