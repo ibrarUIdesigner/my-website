@@ -6,10 +6,10 @@ type StatItem = {
 };
 
 const stats: readonly StatItem[] = [
-  { value: "100%", label: "System Uptime" },
-  { value: "18", label: "Open Source" },
-  { value: "12k", label: "Commits" },
-  { value: "24/7", label: "Deployment" },
+  { value: "5+ yrs", label: "Production Experience" },
+  { value: "50+", label: "Projects Delivered" },
+  { value: "95+", label: "Lighthouse Perf." },
+  { value: "100%", label: "Responsive Coverage" },
 ] as const;
 
 export default function StatsRow(): JSX.Element {

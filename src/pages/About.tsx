@@ -71,43 +71,38 @@ export default function About(): JSX.Element {
                   Who I Am
                 </div>
                 <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white">
-                  Crafting digital{" "}
-                  <span className="text-sky-400">experiences</span> that matter.
+                  Senior Frontend Engineer driving scalable, reliable products.
                 </h1>
               </div>
               <BentoCard className="p-6 mb-6">
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  I’m a passionate{" "}
-                  <span className="font-bold text-white">
-                    Frontend Developer
-                  </span>{" "}
-                  with strong expertise in React, Angular, and TypeScript,
-                  focused on building scalable, high-performance, and
-                  user-centric web applications. I enjoy transforming complex
-                  requirements into clean, maintainable, and elegant interfaces.
+                  I specialize in React, Angular, TypeScript and modern{" "}
+                  <span className="font-bold text-white">frontend architecture</span>{" "}
+                  to ship production-grade, responsive applications. My approach is
+                  outcome-first: optimize performance, reduce complexity, and deliver
+                  clean code that scales.
                 </p>
                 <p className="text-slate-400 text-sm leading-relaxed mt-4">
-                  With hands-on experience in{" "}
-                  <span className="font-bold text-white">Express.js</span> and
-                  REST API integration, I bridge the gap between frontend and
-                  backend systems, ensuring seamless communication and optimized
-                  application performance.
+                  On the backend, I integrate{" "}
+                  <span className="font-bold text-white">Node.js</span> and{" "}
+                  <span className="font-bold text-white">Express.js</span>{" "}
+                  with robust <span className="font-bold text-white">REST APIs</span>,
+                  designing interfaces that are predictable, secure, and simple to maintain.
                 </p>
                 <p className="text-slate-400 text-sm leading-relaxed mt-4">
-                  Beyond traditional development, I specialize in workflow
-                  automation using platforms like{" "}
+                  I also build <span className="font-bold text-white">workflow automation</span> with{" "}
                   <span className="font-bold text-white">n8n</span>,{" "}
                   <span className="font-bold text-white">Make.com</span>, and{" "}
                   <span className="font-bold text-white">Zapier</span>,
-                  designing smart systems that reduce manual work, improve
-                  efficiency, and connect multiple services effortlessly.
+                  reducing manual ops, accelerating delivery, and connecting services
+                  through reliable API integration.
                 </p>
                 <p className="text-slate-400 text-sm leading-relaxed mt-4">
-                  I also embrace{" "}
-                  <span className="font-bold text-white">vibe coding</span> —
-                  blending creativity with clean architecture, performance
-                  optimization, and modern UI/UX principles to craft products
-                  that don’t just work, but feel intuitive and polished.
+                  My focus areas: <span className="font-bold text-white">Scalable Applications</span>,{" "}
+                  <span className="font-bold text-white">Performance Optimization</span>,{" "}
+                  <span className="font-bold text-white">Clean Code</span>, and{" "}
+                  <span className="font-bold text-white">Responsive Design</span> that
+                  consistently meet production standards.
                 </p>
                 <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="flex items-center gap-2 px-3 py-2 rounded-md border border-slate-800 bg-slate-900/50 text-slate-300">

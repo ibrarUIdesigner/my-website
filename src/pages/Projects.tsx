@@ -72,8 +72,8 @@ export default function Projects(): JSX.Element {
                   Selected <span className="text-sky-400">Work</span>
                 </h1>
                 <p className="text-slate-400 max-w-lg text-lg leading-relaxed">
-                  A curated collection of engineering challenges, interface
-                  designs, and digital products built for the modern web.
+                  Selected production work focused on scalable applications, clean frontend
+                  architecture, robust REST API integration, and measurable performance gains.
                 </p>
               </div>
               <div className="flex items-center gap-4 text-slate-500 font-mono text-sm tracking-widest">

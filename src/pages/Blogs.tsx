@@ -65,7 +65,8 @@ export default function Blogs(): JSX.Element {
                   Insights
                 </h1>
                 <p className="text-slate-400 max-w-lg text-lg leading-relaxed">
-                  Articles and notes on frontend engineering, design systems, and modern web practices.
+                  Engineering insights covering React, Angular, TypeScript, REST APIs, frontend
+                  architecture, performance optimization, and workflow automation (n8n, Make.com, Zapier).
                 </p>
               </div>
               <div className="flex items-center gap-4 text-slate-500 font-mono text-sm tracking-widest">

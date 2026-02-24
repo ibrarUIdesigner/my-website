@@ -25,11 +25,14 @@ export default function ProfileCard(): JSX.Element {
           Muhammad Ibrar
         </h3>
         <p className="text-slate-500 text-xs font-mono-nums mb-4">
-          Full Stack Engineer
+          Senior Frontend Engineer • Automation
         </p>
         <p className="text-slate-400 text-sm leading-relaxed mb-6 border-l-2 border-slate-800 pl-3">
-          Engineering digital experiences with precision and futuristic design
-          principles.
+          I build scalable, production-grade frontends (React, Angular, TypeScript)
+          with clean architecture, robust REST API integration, and performance
+          optimization through profiling and best practices. Strong backend integration
+          (Node.js, Express.js) plus workflow automation (n8n, Make.com, Zapier) to
+          ship faster with reliability.
         </p>
       </div>
       <Link

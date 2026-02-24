@@ -14,11 +14,12 @@ export default function Contact(): JSX.Element {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-800 pb-8">
               <div>
                 <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white">
-                  Let&apos;s build something{" "}
-                  <span className="text-sky-400">exceptional</span>.
+                  Let&apos;s ship scalable, reliable products.
                 </h1>
                 <p className="text-slate-400 max-w-xl text-lg leading-relaxed mt-4">
-                  Tell me about your project or idea. I respond within 24 hours.
+                  Share your roadmap or problem statement — I respond within 24
+                  hours with a practical approach focused on clean architecture,
+                  performance, and delivery.
                 </p>
               </div>
               <div className="flex items-center gap-4 text-slate-500 font-mono text-sm tracking-widest">
@@ -132,7 +133,7 @@ export default function Contact(): JSX.Element {
                 </div>
                 <div className="flex items-center gap-2 text-slate-400 text-xs">
                   <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-                  Accepting new projects
+                  Accepting high-impact frontend and automation projects
                 </div>
               </BentoCard>
             </div>
