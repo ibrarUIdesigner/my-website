@@ -1,5 +1,6 @@
 import type { JSX } from "react";
 import { Link } from "react-router-dom";
+import { TypeAnimation } from "react-type-animation";
 
 export default function Hero(): JSX.Element {
   return (
@@ -14,16 +15,36 @@ export default function Hero(): JSX.Element {
         </span>
       </div>
       <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tight max-w-4xl mx-auto">
-        Senior Frontend & Automation Engineer
+        <TypeAnimation
+          sequence={[
+            "Senior Frontend Engineer",
+            2000,
+            "Automation Engineer",
+            2000,
+            "TypeScript Specialist",
+            2000,
+            "UI Performance Expert",
+            2000,
+          ]}
+          wrapper="span"
+          speed={60}
+          deletionSpeed={40}
+          repeat={Infinity}
+        />
       </h1>
       <p className="text-slate-400 max-w-xl mx-auto mb-10 text-sm leading-relaxed">
-        I design and ship production-grade frontends using React, Angular, and
-        TypeScript — with a relentless focus on performance, clean architecture,
-        and maintainability. On top of that, I build automation systems (n8n,
-        Make.com, Zapier) that eliminate manual bottlenecks and let teams move
-        faster without adding headcount. Backend? I speak it fluently enough to
-        own end-to-end delivery — Node.js/Express.js for APIs and integrations
-        when needed.
+        I design and ship production-grade frontends using{" "}
+        <span className="text-white font-bold">
+          React, Angular, and TypeScript
+        </span>{" "}
+        — with a relentless focus on performance, clean architecture, and
+        maintainability. On top of that, I build automation systems{" "}
+        <span className="text-white font-bold">(n8n, Make.com, Zapier)</span>{" "}
+        that eliminate manual bottlenecks and let teams move faster without
+        adding headcount. Backend? I speak it fluently enough to own end-to-end
+        delivery —{" "}
+        <span className="text-white font-bold">Node.js/Express.js</span> for
+        APIs and integrations when needed.
       </p>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <Link
