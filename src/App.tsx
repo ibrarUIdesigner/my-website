@@ -10,16 +10,19 @@ import AdminProjects from "./pages/admin/AdminProjects";
 import AdminBlogs from "./pages/admin/AdminBlogs";
 import Login from "./pages/Login";
 import RequireAuth from "./components/RequireAuth";
+import SiteLayout from "./components/SiteLayout";
 
 export default function App(): JSX.Element {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/blogs" element={<Blogs />} />
-      <Route path="/blogs/:id" element={<BlogDetail />} />
+      <Route element={<SiteLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/:id" element={<BlogDetail />} />
+      </Route>
       <Route path="/login" element={<Login />} />
       <Route
         path="/admin"

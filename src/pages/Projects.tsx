@@ -1,8 +1,6 @@
 import type { JSX } from "react";
 import { useContext, useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
 import ProjectCard from "../components/ProjectCard";
-import StatsRow from "../components/StatsRow";
 import { LoadingContext } from "../context/LoadingContext";
 
 type RemoteProject = {
@@ -60,11 +58,8 @@ export default function Projects(): JSX.Element {
       });
   }, []);
   return (
-    <div className="relative min-h-screen">
-      <div className="fixed inset-0 z-0 pointer-events-none bg-grid-pattern" />
-      <Navbar />
-      <main className="relative min-h-screen pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto relative z-10">
+    <>
+      <div className="max-w-7xl mx-auto relative z-10">
           <header className="mb-16 md:mb-24">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-800 pb-8">
               <div>
@@ -109,9 +104,7 @@ export default function Projects(): JSX.Element {
               ))
             )}
           </div>
-          <StatsRow />
-        </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
