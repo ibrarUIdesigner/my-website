@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import type { JSX } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const LINKS = ["Home", "Projects", "About", "Insights"] as const;
+const ICONS: Record<(typeof LINKS)[number], string> = {
+  Home: "home",
+  Projects: "layers",
+  About: "person",
+  Insights: "article",
+};
 
 export default function Navbar(): JSX.Element {
   const navigate = useNavigate();
@@ -37,23 +43,37 @@ export default function Navbar(): JSX.Element {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          {LINKS.map((item) => (
-            <Link
-              key={item}
-              className="text-xs font-medium tracking-wide text-slate-400 hover:text-sky-400 transition-colors uppercase"
-              to={
-                item === "Projects"
-                  ? "/projects"
-                  : item === "About"
-                  ? "/about"
-                  : item === "Insights"
-                  ? "/blogs"
-                  : "/"
-              }
-            >
-              {item}
-            </Link>
-          ))}
+          {LINKS.map((item) => {
+            const to =
+              item === "Projects"
+                ? "/projects"
+                : item === "About"
+                ? "/about"
+                : item === "Insights"
+                ? "/blogs"
+                : "/";
+            return (
+              <NavLink
+                key={item}
+                to={to}
+                className={({ isActive }) =>
+                  [
+                    "text-xs font-medium tracking-wide uppercase transition-colors",
+                    isActive
+                      ? "text-sky-400"
+                      : "text-slate-400 hover:text-sky-400",
+                  ].join(" ")
+                }
+              >
+                <span className="inline-flex items-center gap-1">
+                  <span className="material-symbols-outlined text-[14px]">
+                    {ICONS[item]}
+                  </span>
+                  {item}
+                </span>
+              </NavLink>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-4">
@@ -96,31 +116,55 @@ export default function Navbar(): JSX.Element {
         aria-hidden={!open}
       >
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col gap-2 overflow-y-auto">
-          {LINKS.map((item) => (
-            <Link
-              key={item}
-              className="text-xs font-medium tracking-wide text-slate-300 hover:text-sky-400 transition-colors uppercase py-1"
-              to={
-                item === "Projects"
-                  ? "/projects"
-                  : item === "About"
-                  ? "/about"
-                  : item === "Insights"
-                  ? "/blogs"
-                  : "/"
-              }
-              onClick={() => setOpen(false)}
-            >
-              {item}
-            </Link>
-          ))}
-          <Link
-            className="text-xs font-medium tracking-wide text-slate-300 hover:text-sky-400 transition-colors uppercase py-1"
+          {LINKS.map((item) => {
+            const to =
+              item === "Projects"
+                ? "/projects"
+                : item === "About"
+                ? "/about"
+                : item === "Insights"
+                ? "/blogs"
+                : "/";
+            return (
+              <NavLink
+                key={item}
+                to={to}
+                className={({ isActive }) =>
+                  [
+                    "text-xs font-medium tracking-wide uppercase py-1 transition-colors",
+                    isActive
+                      ? "text-sky-400"
+                      : "text-slate-300 hover:text-sky-400",
+                  ].join(" ")
+                }
+                onClick={() => setOpen(false)}
+              >
+                <span className="inline-flex items-center gap-1">
+                  <span className="material-symbols-outlined text-[14px]">
+                    {ICONS[item]}
+                  </span>
+                  {item}
+                </span>
+              </NavLink>
+            );
+          })}
+          <NavLink
             to="/contact"
+            className={({ isActive }) =>
+              [
+                "text-xs font-medium tracking-wide uppercase py-1 transition-colors",
+                isActive ? "text-sky-400" : "text-slate-300 hover:text-sky-400",
+              ].join(" ")
+            }
             onClick={() => setOpen(false)}
           >
-            Contact
-          </Link>
+            <span className="inline-flex items-center gap-1">
+              <span className="material-symbols-outlined text-[14px]">
+                mail
+              </span>
+              Contact
+            </span>
+          </NavLink>
         </div>
       </div>
     </nav>
