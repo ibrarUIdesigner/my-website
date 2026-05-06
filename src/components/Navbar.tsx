@@ -38,7 +38,7 @@ export default function Navbar(): JSX.Element {
             </span>
           </div>
           <span className="text-sm font-bold tracking-wider text-slate-200 font-mono-nums uppercase">
-            DEV.Portfolio
+            Ibrar.DEv
           </span>
         </div>
 
@@ -48,10 +48,10 @@ export default function Navbar(): JSX.Element {
               item === "Projects"
                 ? "/projects"
                 : item === "About"
-                ? "/about"
-                : item === "Insights"
-                ? "/blogs"
-                : "/";
+                  ? "/about"
+                  : item === "Insights"
+                    ? "/blogs"
+                    : "/";
             return (
               <NavLink
                 key={item}
@@ -121,10 +121,10 @@ export default function Navbar(): JSX.Element {
               item === "Projects"
                 ? "/projects"
                 : item === "About"
-                ? "/about"
-                : item === "Insights"
-                ? "/blogs"
-                : "/";
+                  ? "/about"
+                  : item === "Insights"
+                    ? "/blogs"
+                    : "/";
             return (
               <NavLink
                 key={item}
