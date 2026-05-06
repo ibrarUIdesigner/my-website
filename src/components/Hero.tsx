@@ -17,13 +17,11 @@ export default function Hero(): JSX.Element {
       <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tight max-w-4xl mx-auto">
         <TypeAnimation
           sequence={[
-            "Senior Frontend Engineer",
+            "MERN Stack Developer",
             2000,
             "Automation Engineer",
             2000,
-            "TypeScript Specialist",
-            2000,
-            "UI Performance Expert",
+            "UI Expert",
             2000,
           ]}
           wrapper="span"
@@ -58,8 +56,8 @@ export default function Hero(): JSX.Element {
         </Link>
         <a
           className="w-full sm:w-auto px-8 py-3 border border-slate-800 text-slate-400 rounded-md font-medium text-sm hover:border-slate-600 hover:text-slate-200 transition-all flex items-center justify-center gap-2 bg-slate-900/50"
-          href="/MuhammadIbrarResume_Frontend_Angular_Developer_4YR_EXP.pdf"
-          download="MuhammadIbrarResume_Frontend_Angular_Developer_4YR_EXP.pdf"
+          href="/Muhammad_Ibrar_MERN_MEAN_CV.pdf"
+          download="Muhammad_Ibrar_MERN_MEAN_CV.pdf"
         >
           Download_CV
           <span className="material-symbols-outlined text-sm">terminal</span>

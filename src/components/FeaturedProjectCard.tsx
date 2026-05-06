@@ -3,55 +3,17 @@ import type { JSX } from "react";
 import BentoCard from "./BentoCard";
 import { projectImgUrl } from "../assets/images";
 import { LoadingContext } from "../context/LoadingContext";
-
-type RemoteProject = {
-  id: string;
-  name: string;
-  description: string;
-  category?: string;
-  imageUrl?: string;
-  thumbnailUrl?: string;
-  link?: string;
-};
+import { projects } from "../data/Projects";
+import { RemoteProject } from "../pages/Projects";
 
 export default function FeaturedProjectCard(): JSX.Element {
   const [item, setItem] = useState<RemoteProject | null>(null);
-  const { start, stop } = useContext(LoadingContext);
 
   useEffect(() => {
-    const url =
-      "https://portfolio-e626d-default-rtdb.firebaseio.com/projects.json";
-    start();
-    fetch(url)
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        let list: Array<RemoteProject> = [];
-        if (Array.isArray(data))
-          list = data.filter(Boolean) as Array<RemoteProject>;
-        else if (data && typeof data === "object")
-          list = Object.values(data as Record<string, RemoteProject>);
-        if (list.length > 0) {
-          const idx = Math.floor(Math.random() * list.length);
-          const random = list[idx] ?? list[0] ?? null;
-          setItem(random);
-        }
-      })
-      .catch(() => {
-        setItem({
-          id: "sample-featured",
-          name: "01 - BONX",
-          description:
-            "BONX is a gaming platform designed to offer a wide variety of games for all types of players. Built with React.js, the website delivers a seamless and fully responsive experience across all devices.",
-          category: "React",
-          imageUrl:
-            "https://firebasestorage.googleapis.com/v0/b/portfolio-e626d.appspot.com/o/images%2Fd090ea86-0412-4942-b072-e1ce8f7adde4_HomePage.jpg?alt=media&token=7d6327e2-f37c-4cf3-9316-81eda49e338b",
-          thumbnailUrl:
-            "https://firebasestorage.googleapis.com/v0/b/portfolio-e626d.appspot.com/o/images%2F2817ebc9-7d9b-4a5d-a65e-c3e554b40790_01-BONX.png?alt=media&token=3c991dfd-a933-467b-a0f5-9d1a773974a6",
-          link: "",
-        });
-      })
-      .finally(() => stop());
+    const list = projects;
+    const idx = Math.floor(Math.random() * list.length);
+    const random = list[idx] ?? list[0] ?? null;
+    setItem(random);
   }, []);
 
   return (
@@ -92,7 +54,7 @@ export default function FeaturedProjectCard(): JSX.Element {
       <div className="w-full h-full bg-slate-900 relative">
         <img
           alt="Project Screenshot"
-          className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700 ease-out grayscale hover:grayscale-0"
+          className="w-full h-full object-fit  group-hover:opacity-80 group-hover:scale-105 transition-all duration-700 ease-out grayscale hover:grayscale-0"
           src={item?.thumbnailUrl || item?.imageUrl || projectImgUrl}
         />
       </div>
@@ -101,9 +63,6 @@ export default function FeaturedProjectCard(): JSX.Element {
         <div className="flex gap-2">
           <span className="px-2 py-0.5 bg-slate-950/80 border border-slate-800 rounded text-[10px] text-slate-400 font-mono-nums">
             {item?.category?.toUpperCase() ?? "REACT"}
-          </span>
-          <span className="px-2 py-0.5 bg-slate-950/80 border border-slate-800 rounded text-[10px] text-slate-400 font-mono-nums">
-            TAILWIND
           </span>
         </div>
       </div>
